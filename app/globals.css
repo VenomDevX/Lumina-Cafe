@@ -1,0 +1,117 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "lenis/dist/lenis.css";
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist);
+  --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-fraunces);
+  --font-display: var(--font-fraunces);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
+  --radius-2xl: 0px;
+  --radius-3xl: 0px;
+  --radius-4xl: 0px;
+
+  /* Lumina: paper, ink and two drinks */
+  --color-paper: #f3ede3;
+  --color-sand: #e9dfcf;
+  --color-ink: #17120e;
+  --color-coffee: #6b3f22;
+  --color-crema: #b07a4f;
+  --color-matcha: #56703a;
+  --color-leaf: #e3e7d3;
+  --ease-sharp: cubic-bezier(0.7, 0, 0.2, 1);
+}
+
+:root {
+  --background: #f3ede3;
+  --foreground: #17120e;
+  --card: #f3ede3;
+  --card-foreground: #17120e;
+  --popover: #f3ede3;
+  --popover-foreground: #17120e;
+  --primary: #17120e;
+  --primary-foreground: #f3ede3;
+  --secondary: #e9dfcf;
+  --secondary-foreground: #17120e;
+  --muted: #e9dfcf;
+  --muted-foreground: #5f554c;
+  --accent: #e9dfcf;
+  --accent-foreground: #17120e;
+  --destructive: #a3341f;
+  --border: rgb(23 18 14 / 0.14);
+  --input: rgb(23 18 14 / 0.25);
+  --ring: #17120e;
+  --radius: 0rem;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    @apply font-sans;
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "ss01", "tnum";
+    text-rendering: optimizeLegibility;
+  }
+  ::selection {
+    background: var(--color-ink);
+    color: var(--color-paper);
+  }
+  :focus-visible {
+    outline: 1px solid currentColor;
+    outline-offset: 4px;
+  }
+}
+
+/* Mono micro-labels: "(01) Story", prices, steps */
+@utility label-mono {
+  font-family: var(--font-geist-mono);
+  font-size: 11px;
+  line-height: 1.4;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Paper grain: fixed, non-interactive, never on scrolling layers */
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Elements GSAP reveals start hidden only when JS + motion are available */
+@media (prefers-reduced-motion: no-preference) {
+  .js [data-reveal] {
+    opacity: 0;
+  }
+}
