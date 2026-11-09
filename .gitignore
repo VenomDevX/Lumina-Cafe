@@ -31,6 +31,7 @@ yarn-error.log*
 .pnpm-debug.log*
 
 # env files (can opt-in for committing if needed)
+.env*
 
 # vercel
 .vercel
@@ -43,4 +44,6 @@ next-env.d.ts
 
 # source photos (cut-outs live in public/images)
 /*.jpeg
-config.bat
+
+# editor (keeps auto-run tasks/settings out of the repo)
+/.vscode/
